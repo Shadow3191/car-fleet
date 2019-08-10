@@ -15,7 +15,7 @@ public class Driver {
     private Long id;
     private String firstName;
     private String lastName;
-    private String pessel;
+    private String pesel;
     private String jobTitle;
 
     @Embedded

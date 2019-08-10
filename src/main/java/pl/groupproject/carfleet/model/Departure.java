@@ -14,10 +14,7 @@ public class Departure {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column
     private String depFrom;
-    @Column
     private String depTo;
-    @Column
     private int distance;
 }
