@@ -9,19 +9,20 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "drivers")
+@Entity
 public class Driver {
+
     @Id
     @GeneratedValue
     private Long id;
+    private String login;
+    private String password;
+    private String email;
     private String firstName;
     private String lastName;
     private String pesel;
     private String jobTitle;
 
-    @Embedded
-    private User user;
-    @OneToMany(mappedBy = "users") //?jeden do jednego?
-    private List<User> userList;
 
     @Embedded
     private Car car;
