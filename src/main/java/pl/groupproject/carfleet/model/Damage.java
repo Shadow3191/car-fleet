@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,14 +20,14 @@ public class Damage {
     private boolean drivable;
 
 
-    @OneToMany
-    private Car car;
+    @ManyToMany(mappedBy = "damages")
+    private List<Departure> departureList;
+
+    @ManyToMany(mappedBy = "damages")
+    private List<Car> carList;
 
     @ManyToOne
-    private Driver driver;
-
-    @ManyToOne
-    private Departure departure;
-
+    @JoinColumn(name = "driver_id")
+    private List<Driver> driverList;
 
 }

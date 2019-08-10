@@ -9,10 +9,11 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Table
 public class Car {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String carModel;
     private String initialMileage;
@@ -20,7 +21,16 @@ public class Car {
     private String vinNr;
     private int amountOfFuel;
 
-    @ManyToOne
+    @ManyToMany(mappedBy = "cars")
+    private List<Driver> driverList;
+
+    @ManyToMany
+    @JoinTable(
+            name = "damage_cars",
+            joinColumns = @JoinColumn(name = "car_id"),
+            inverseJoinColumns = @JoinColumn(name = "damage_id"))
     private List<Damage> damageList;
 
+    @OneToMany(mappedBy = "departures")
+    private List<Departure> departureList;
 }
