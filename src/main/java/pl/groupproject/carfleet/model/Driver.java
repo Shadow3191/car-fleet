@@ -2,6 +2,7 @@ package pl.groupproject.carfleet.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.annotation.EnableMBeanExport;
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,7 +27,16 @@ public class Driver {
 
     @Embedded
     private Car car;
-    @ManyToMany (mappedBy = "cars")   //jeden kierowca do wilu aut
+    @ManyToMany
+    @JoinTable(
+            name = "drivers_car",
+            joinColumns = @JoinColumn(name = "driver_id"),
+            inverseJoinColumns = @JoinColumn(name = "car_id"))
     private List<Car> carList;
 
+    @OneToMany(mappedBy = "departures")
+    private List<Departure> departureList;
+
+    @OneToMany(mappedBy = "damages")
+    private List<Damage> damageList;
 }
