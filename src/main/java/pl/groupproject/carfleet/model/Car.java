@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Cars {
+public class Car {
     private String mark;
     private String carModel;
     private String initialMileage;
