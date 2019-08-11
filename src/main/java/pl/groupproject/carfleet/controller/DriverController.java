@@ -20,7 +20,7 @@ public class DriverController {
     @GetMapping("/registration")
     public String registration(Model model){
         model.addAttribute("driverForm", new Driver());
-        return "/registration";
+        return "registration";
     }
 
     @PostMapping("/registration")
