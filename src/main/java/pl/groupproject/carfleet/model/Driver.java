@@ -25,6 +25,7 @@ public class Driver {
     private String lastName;
     private String pesel;
     private String jobTitle;
+    private String passwordConfirm;
 
     //@Embedded private Car car;
 
@@ -47,4 +48,8 @@ public class Driver {
     @ManyToOne
     @JoinColumn(name = "damages_id")
     private Damage damages;
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
 }
