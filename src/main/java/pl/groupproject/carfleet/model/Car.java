@@ -5,15 +5,18 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
+//@Embeddable
 @Getter
 @Setter
 @Entity
-@Table
+@Table(name = "cars")
 public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
     private String carModel;
     private String initialMileage;
@@ -22,15 +25,20 @@ public class Car {
     private int amountOfFuel;
 
     @ManyToMany(mappedBy = "cars")
-    private List<Driver> driverList;
+    private List<Driver> drivers;
 
-    @ManyToMany
+
+    @ManyToMany //c**
     @JoinTable(
-            name = "damage_cars",
+            name = "damages_cars",
             joinColumns = @JoinColumn(name = "car_id"),
             inverseJoinColumns = @JoinColumn(name = "damage_id"))
-    private List<Damage> damageList;
+    private List<Damage> damages;
 
-    @OneToMany(mappedBy = "departures")
-    private List<Departure> departureList;
+
+    //    @OneToMany(mappedBy = "cars")
+//    private List<Departure> departures;
+    @ManyToOne
+    @JoinColumn(name = "departures_id")
+    private Departure departures;
 }

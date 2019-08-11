@@ -6,15 +6,17 @@ import org.springframework.context.annotation.EnableMBeanExport;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
-@Table(name = "drivers")
 @Entity
+@Table(name = "drivers")
 public class Driver {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
     private String login;
     private String password;
@@ -24,19 +26,25 @@ public class Driver {
     private String pesel;
     private String jobTitle;
 
+    //@Embedded private Car car;
 
-    @Embedded
-    private Car car;
-    @ManyToMany
+    @ManyToMany //c*
     @JoinTable(
-            name = "drivers_car",
+            name = "cars_drivers",
             joinColumns = @JoinColumn(name = "driver_id"),
             inverseJoinColumns = @JoinColumn(name = "car_id"))
-    private List<Car> carList;
+    private List<Car> cars;
 
-    @OneToMany(mappedBy = "departures")
-    private List<Departure> departureList;
 
-    @OneToMany(mappedBy = "damages")
-    private List<Damage> damageList;
+    //    @OneToMany(mappedBy = "drivers")
+//    private Set<Departure> departures;
+    @ManyToOne
+    @JoinColumn(name = "departures_id")
+    private Departure departures;
+
+    //    @OneToMany(mappedBy = "drivers")
+//    private Set<Damage> damages;
+    @ManyToOne
+    @JoinColumn(name = "damages_id")
+    private Damage damages;
 }
