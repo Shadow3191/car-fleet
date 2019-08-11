@@ -5,29 +5,37 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
-@Table
+@Entity
+@Table (name = "damages")
 public class Damage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id")
     private Long id;
+    @Enumerated(EnumType.STRING)
     private DamageType damageType;
     private String description;
-    @Column(name = "can_be_used_t/f")
+    @Column(name = "can_be_used")
     private boolean drivable;
 
 
     @ManyToMany(mappedBy = "damages")
-    private List<Departure> departureList;
+    private Set<Departure> departures;
 
     @ManyToMany(mappedBy = "damages")
-    private List<Car> carList;
+    private List<Car> cars;
 
-    @ManyToOne
-    @JoinColumn(name = "driver_id")
-    private List<Driver> driverList;
+
+//    @ManyToOne
+//    @JoinColumn(name = "drivers_id")
+//    private Driver driver;
+
+    @OneToMany(mappedBy = "damages")
+    private Set<Driver> drivers;
 
 }

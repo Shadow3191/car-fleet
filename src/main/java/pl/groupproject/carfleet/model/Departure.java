@@ -4,32 +4,40 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.security.DomainCombiner;
 import java.util.List;
 
 @Getter
 @Setter
-@Table
 @Entity
+@Table(name = "departures")
 public class Departure {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
     private String depFrom;
     private String depTo;
     private int distance;
 
+    @ManyToMany
     @JoinTable(
-            name = "departure_damage",
+            name = "departures_damages",
             joinColumns = @JoinColumn(name = "departure_id"),
             inverseJoinColumns = @JoinColumn(name = "damage_id"))
-    private List<Departure> departureList;
+    private List<Damage> damages;
 
-    @ManyToOne
-    @JoinColumn(name = "driver_id")
-    private List<Driver> driverList;
+    //    @ManyToOne
+//    @JoinColumn(name = "drivers_id")
+//    private Driver driver; //nie może być lista
+    @OneToMany(mappedBy = "departures")
+    private List<Driver> drivers;
 
-    @ManyToOne
-    @JoinColumn(name = "car_id")
-    private List<Car> carList;
+//    @ManyToOne
+//    @JoinColumn(name = "cars_id")
+//    private Car car;
+
+    @OneToMany(mappedBy = "departures")
+    private List<Car> cars;
 }
