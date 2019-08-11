@@ -17,9 +17,10 @@ public class Damage {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private Long id;
+    @Enumerated(EnumType.STRING)
     private DamageType damageType;
     private String description;
-    @Column(name = "can_be_used_t/f")
+    @Column(name = "can_be_used")
     private boolean drivable;
 
 
