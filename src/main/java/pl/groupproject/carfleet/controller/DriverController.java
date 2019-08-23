@@ -1,5 +1,7 @@
 package pl.groupproject.carfleet.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,24 +11,30 @@ import pl.groupproject.carfleet.security.SecurityService;
 import pl.groupproject.carfleet.service.DriverService;
 import pl.groupproject.carfleet.validator.UserValidator;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Controller
 public class DriverController {
 
+    @Autowired
     private DriverService driverService;
+   @Autowired
     private SecurityService securityService;
+   @Autowired
     private UserValidator userValidator;
 
     @GetMapping("/registration")
-    public String registration(Model model){
+    public String registration(Model model) {
         model.addAttribute("driverForm", new Driver());
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("driverForm") Driver driverForm, BindingResult bindingResult){
+    public String registration(@ModelAttribute("driverForm") Driver driverForm, BindingResult bindingResult) {
         userValidator.validate(driverForm, bindingResult);
 
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "/registration";
         }
         driverService.save(driverForm);
@@ -34,7 +42,7 @@ public class DriverController {
         return "redirect:/welcome";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @GetMapping ("/login")
     public String login(Model model, String error, String logout) {
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
@@ -45,10 +53,18 @@ public class DriverController {
         return "login";
     }
 
-    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
+    @GetMapping ("/welcome")
     public String welcome(Model model) {
         return "welcome";
     }
 
+
+    public SecurityService getSecurityService() {
+        return securityService;
+    }
+
+    public void setSecurityService(SecurityService securityService) {
+        this.securityService = securityService;
+    }
 
 }

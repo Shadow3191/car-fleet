@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.groupproject.carfleet.model.Driver;
 import pl.groupproject.carfleet.model.Role;
@@ -13,14 +14,14 @@ import pl.groupproject.carfleet.repository.DriverRepository;
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class DriverDetailsServiceImpl implements DriverDetailsService {
 
-
-    @Autowired
+    //@Autowired
     private DriverRepository driverRepository;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional (readOnly = true)
     public UserDetails loadDriverByLogin(String login) throws UsernameNotFoundException {
         Driver driver = driverRepository.findByLogin(login);
 
@@ -30,8 +31,11 @@ public class DriverDetailsServiceImpl implements DriverDetailsService {
         }
 
         return new org.springframework.security.core.userdetails
-                .User(driver.getFirstName(), driver.getPassword(), grantedAuthorities);
-        //.User(user.getUsername(), user.getPassword(), grantedAuthorities);
+                .User(driver.getLogin(), driver.getPassword(), grantedAuthorities);
 
+    }
+
+    public void setDriverRepository(DriverRepository driverRepository) {
+        this.driverRepository = driverRepository;
     }
 }
