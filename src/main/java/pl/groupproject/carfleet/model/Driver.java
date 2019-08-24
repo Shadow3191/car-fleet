@@ -49,6 +49,12 @@ public class Driver {
     @JoinColumn(name = "damages_id")
     private Damage damages;
 
+    @ManyToMany
+    @JoinTable(name = "drivers_roles",
+            joinColumns = @JoinColumn(name = "driver_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
     public String getPasswordConfirm() {
         return passwordConfirm;
     }

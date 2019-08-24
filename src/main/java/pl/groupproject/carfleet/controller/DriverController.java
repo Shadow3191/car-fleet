@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.groupproject.carfleet.model.Driver;
-import pl.groupproject.carfleet.repository.DriverRepository;
+import pl.groupproject.carfleet.security.SecurityService;
 import pl.groupproject.carfleet.service.DriverService;
 import pl.groupproject.carfleet.validator.UserValidator;
 
@@ -16,11 +16,17 @@ import pl.groupproject.carfleet.validator.UserValidator;
 public class DriverController {
 
     @Autowired
-    private DriverRepository driverRepository;
+    private final DriverService driverService;
     @Autowired
-    private DriverService driverService;
+    private final SecurityService securityService;
     @Autowired
-    private UserValidator userValidator;
+    private final UserValidator userValidator;
+
+    public DriverController(DriverService driverService, SecurityService securityService, UserValidator userValidator) {
+        this.driverService = driverService;
+        this.securityService = securityService;
+        this.userValidator = userValidator;
+    }
 
     @GetMapping("/registration")
     public String registration(Model model){
@@ -40,4 +46,23 @@ public class DriverController {
         return "redirect:/welcome";
     }
 
+    @GetMapping ("/login")
+    public String login(Model model, String error, String logout) {
+        if (error != null)
+            model.addAttribute("error", "Your username and password is invalid.");
+
+        if (logout != null)
+            model.addAttribute("message", "You have been logged out successfully.");
+
+        return "/login";
+    }
+
+    @GetMapping ("/welcome")
+    public String welcome(Model model) {
+        return "/welcome";
+    }
+
+    public SecurityService getSecurityService() {
+        return securityService;
+    }
 }
