@@ -1,7 +1,9 @@
 package pl.groupproject.carfleet.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "cars")
+@EntityListeners(AuditingEntityListener.class)
 public class Car {
 
     @Id
@@ -41,4 +44,15 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "departures_id")
     private Departure departures;
+
+    public Car(String carModel, String initialMileage, String finaleMileage, String vinNr) {
+        this.carModel = carModel;
+        this.initialMileage = initialMileage;
+        this.finaleMileage = finaleMileage;
+        this.vinNr = vinNr;
+    }
+
+    public Car() {
+
+    }
 }
