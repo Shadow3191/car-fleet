@@ -1,5 +1,5 @@
 <%@ page import="pl.groupproject.carfleet.repository.DamageRepository" %>
-<%@ page import="pl.sda.user.model.DamageType" %>
+<%@ page import="pl.groupproject.carfleet.model.DamageType" %>
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -18,7 +18,8 @@
         <p>Please fill in this form to create a new car domage.</p>
         <hr>
         <label for="damageType"><b>Damage Type</b></label>
-        <input type="text" placeholder="Enter damageType" name="damageType" required><p></p>
+        <input type="text" placeholder="Enter damageType" name="damageType" required>
+        <p></p>
         <select name="damageType">
             <option>${damageType.ENGINE}</option>
             <option>${damageType.CARSHEET}</option>
@@ -27,12 +28,18 @@
         </select>
 
         <label for="description"><b>Description</b></label>
-        <input type="text" placeholder="Enter description" name="description" required><p></p>
+        <input type="text" placeholder="Enter description" name="description" required>
+        <p></p>
 
         <label for="drivable"><b>Drivable?</b></label>
-        <input type="text" placeholder="Drivable T/F" name="drivable" required><p></p>
+        <input type="text" placeholder="Drivable T/F" name="drivable" required>
+        <p></p>
+        <select name="drivable">
+            <option>${damage.drivable.false}</option>
+            <option>${damage.drivable.true}</option>
+        </select>
 
-        <label path="login"><b> ...  </b></label>
+        <label path="login"><b> ... </b></label>
         <input path="login" type="text" placeholder="Enter Login" name="login"/><br>
 
         <hr>
