@@ -1,6 +1,5 @@
 package pl.groupproject.carfleet.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.groupproject.carfleet.model.Driver;
@@ -13,11 +12,16 @@ import java.util.HashSet;
 public class DriverServiceImpl implements DriverService {
 
     //@Autowired
-    private DriverRepository driverRepository;
+    private final DriverRepository driverRepository;
     //@Autowired
-    private RoleRepository roleRepository;
+    private final RoleRepository roleRepository;
     //@Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public DriverServiceImpl(DriverRepository driverRepository, RoleRepository roleRepository) {
+        this.driverRepository = driverRepository;
+        this.roleRepository = roleRepository;
+    }
 
     @Override
     public void save(Driver driver) {
@@ -31,13 +35,6 @@ public class DriverServiceImpl implements DriverService {
         return driverRepository.findByLogin(login);
     }
 
-    public void setDriverRepository(DriverRepository driverRepository) {
-        this.driverRepository = driverRepository;
-    }
-
-    public void setRoleRepository(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
-    }
 
     public void setbCryptPasswordEncoder(BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;

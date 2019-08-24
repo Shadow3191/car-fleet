@@ -10,18 +10,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import pl.groupproject.carfleet.service.DriverDetailsService;
+import pl.groupproject.carfleet.service.DriverDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     //private UserDetailsService userDetailsService;
-   @Autowired
-    private DriverDetailsService driverDetailsService;
-
-    public WebSecurityConfig(DriverDetailsService driverDetailsService) {
-        this.driverDetailsService = driverDetailsService;
-    }
+    @Autowired
+    private DriverDetailsServiceImpl driverDetailsService;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -37,6 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .successForwardUrl("/welcome")
                 .permitAll()
                 .and()
                 .logout()
@@ -50,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService()).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(driverDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 
 }
