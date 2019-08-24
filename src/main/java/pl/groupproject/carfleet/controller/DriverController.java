@@ -1,7 +1,6 @@
 package pl.groupproject.carfleet.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,18 +10,21 @@ import pl.groupproject.carfleet.security.SecurityService;
 import pl.groupproject.carfleet.service.DriverService;
 import pl.groupproject.carfleet.validator.UserValidator;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Controller
 public class DriverController {
 
-    @Autowired
-    private DriverService driverService;
-   @Autowired
-    private SecurityService securityService;
-   @Autowired
-    private UserValidator userValidator;
+    //@Autowired
+    private final DriverService driverService;
+  // @Autowired
+    private final SecurityService securityService;
+  // @Autowired
+    private final UserValidator userValidator;
+
+    public DriverController(DriverService driverService, SecurityService securityService, UserValidator userValidator) {
+        this.driverService = driverService;
+        this.securityService = securityService;
+        this.userValidator = userValidator;
+    }
 
     @GetMapping("/registration")
     public String registration(Model model) {
@@ -50,21 +52,15 @@ public class DriverController {
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
 
-        return "login";
+        return "/login";
     }
 
     @GetMapping ("/welcome")
     public String welcome(Model model) {
-        return "welcome";
+        return "/welcome";
     }
-
 
     public SecurityService getSecurityService() {
         return securityService;
     }
-
-    public void setSecurityService(SecurityService securityService) {
-        this.securityService = securityService;
-    }
-
 }
