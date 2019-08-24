@@ -9,5 +9,4 @@ public interface DriverRepository extends JpaRepository<Driver, Long> {
 
     Driver findByLogin(String login);
 
-
 }
