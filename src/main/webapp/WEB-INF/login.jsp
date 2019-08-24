@@ -12,7 +12,7 @@
 
 <body>
 <%--@elvariable id="driverLog" type="java"--%>
-<form:form method="post" action="/login">
+<form method="post" action="login">
 
     <div class="container">
         <h1>LOGIN</h1>
@@ -28,12 +28,12 @@
             <input path="password" type="password" placeholder="Enter Password" name="password"/><br>
 
             <span>${error}</span>
-
             <input type="submit" class="login" value="Login">
+
         </div>
 
     </div>
-</form:form>
+</form>
 
 </body>
 </html>
