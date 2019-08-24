@@ -8,4 +8,6 @@ import pl.groupproject.carfleet.model.Driver;
 public interface DriverRepository extends JpaRepository<Driver, Long> {
 
     Driver findByLogin(String login);
+
+
 }
