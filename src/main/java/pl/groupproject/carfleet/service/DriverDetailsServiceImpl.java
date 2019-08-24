@@ -34,6 +34,8 @@ public class DriverDetailsServiceImpl implements UserDetailsService {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 
+        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_DRIVER"));
+
         return new org.springframework.security.core.userdetails
                 .User(driver.getLogin(), driver.getPassword(), grantedAuthorities);
 

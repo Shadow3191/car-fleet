@@ -15,7 +15,9 @@ import java.util.HashSet;
 public class DriverServiceImpl implements DriverService {
 
     private final DriverRepository driverRepository;
+    //@Autowired
     private final RoleRepository roleRepository;
+    //@Autowired
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
