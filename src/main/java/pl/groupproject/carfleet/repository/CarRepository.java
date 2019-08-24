@@ -2,9 +2,8 @@ package pl.groupproject.carfleet.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.groupproject.carfleet.model.Driver;
+import pl.groupproject.carfleet.model.Car;
 
 @Repository
-public interface DriverRepository extends JpaRepository<Driver, Long> {
-
+public interface CarRepository extends JpaRepository<Car, Long> {
 }

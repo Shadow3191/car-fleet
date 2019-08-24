@@ -25,7 +25,7 @@ public class UserValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Driver driver = (Driver) o;
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "NotEmpty");
         if (driver.getLogin().length() < 3 || driver.getLogin().length() > 32){
             errors.rejectValue("login", "Size.driverForm.login");
         }

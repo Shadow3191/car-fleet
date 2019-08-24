@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import pl.groupproject.carfleet.model.Driver;
 import pl.groupproject.carfleet.security.SecurityService;
 import pl.groupproject.carfleet.service.DriverService;
@@ -13,11 +15,11 @@ import pl.groupproject.carfleet.validator.UserValidator;
 @Controller
 public class DriverController {
 
-    //@Autowired
+    @Autowired
     private final DriverService driverService;
-  // @Autowired
+    @Autowired
     private final SecurityService securityService;
-  // @Autowired
+    @Autowired
     private final UserValidator userValidator;
 
     public DriverController(DriverService driverService, SecurityService securityService, UserValidator userValidator) {
@@ -27,16 +29,16 @@ public class DriverController {
     }
 
     @GetMapping("/registration")
-    public String registration(Model model) {
+    public String registration(Model model){
         model.addAttribute("driverForm", new Driver());
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("driverForm") Driver driverForm, BindingResult bindingResult) {
+    public String registration(@ModelAttribute("driverForm") Driver driverForm, BindingResult bindingResult){
         userValidator.validate(driverForm, bindingResult);
 
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()){
             return "/registration";
         }
         driverService.save(driverForm);
