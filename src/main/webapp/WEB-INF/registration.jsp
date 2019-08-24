@@ -8,26 +8,38 @@
     <title>Registration</title>
 </head>
 <body>
-<form>
+<form:form method="post" modelAttribute="driverForm">
     <div class="container">
         <h1>Register</h1>
         <p>Please fill in this form to create an account.</p>
         <hr>
 
-        <label for="login"><b>Login</b></label>
-        <input type="text" placeholder="Enter Login" name="login" required>
+        <label path="login"><b>Login</b></label>
+        <input path="login" type="text" placeholder="Enter Login" name="login"/><br>
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
+        <label path="email"><b>Email</b></label>
+        <input path="email" type="text" placeholder="Enter Email" name="email"/><br>
 
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
+        <label path="password"><b>Password</b></label>
+        <input path="password" type="password" placeholder="Enter Password" name="password"/><br>
 
-        <label for="password"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="password" required>
+        <label path="passwordConfirm"><b>Repeat Password</b></label>
+        <input path="passwordConfirm" type="password" placeholder="Repeat Password" name="passwordConfirm"/><br>
+
+        <label path="pesel"><b>Pesel</b></label>
+        <input path="pesel" type="text" placeholder="Enter PESEL" name="pesel"/><br>
+
+        <label path="firstName"><b>First Name</b></label>
+        <input path="firstName" type="text" placeholder="Name" name="firstName"/><br>
+
+        <label path="lastName"><b>Last Name</b></label>
+        <input path="lastName" type="text" placeholder="Last Name" name="lastName"/><br>
+
+        <label path="jobTitle"><b>Occupation</b></label>
+        <input path="jobTitle" type="text" placeholder="Occupation" name="jobTitle"/><br>
         <hr>
-        <button type="submit" class="registerbtn">Register</button>
+        <input type="submit" class="registration" value="Register">
     </div>
-</form>
+</form:form>
 </body>
 </html>
