@@ -30,7 +30,6 @@ public class Damage {
     @ManyToMany(mappedBy = "damages")
     private List<Car> cars;
 
-
 //    @ManyToOne
 //    @JoinColumn(name = "drivers_id")
 //    private Driver driver;

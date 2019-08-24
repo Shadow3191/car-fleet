@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import pl.groupproject.carfleet.model.Car;
 import pl.groupproject.carfleet.repository.CarRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
