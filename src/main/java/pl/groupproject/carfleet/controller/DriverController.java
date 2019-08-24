@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.groupproject.carfleet.model.Driver;
 import pl.groupproject.carfleet.security.SecurityService;
 import pl.groupproject.carfleet.service.DriverService;
@@ -57,7 +58,7 @@ public class DriverController {
         return "/login";
     }
 
-    @GetMapping ("/welcome")
+    @RequestMapping("/welcome")
     public String welcome(Model model) {
         return "/welcome";
     }
