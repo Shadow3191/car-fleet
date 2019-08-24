@@ -1,9 +1,10 @@
 package pl.groupproject.carfleet.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import pl.groupproject.carfleet.dto.CarInformationDto;
+import pl.groupproject.carfleet.dto.CarsDto;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,6 +16,9 @@ import java.util.Set;
 @Entity
 @Table(name = "cars")
 @EntityListeners(AuditingEntityListener.class)
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Car {
 
     @Id
@@ -30,8 +34,25 @@ public class Car {
     @ManyToMany(mappedBy = "cars")
     private List<Driver> drivers;
 
+    public CarsDto carsDto(){
+        return CarsDto.builder()
+                .id(id)
+                .carModel(carModel)
+                .build();
+    }
 
-    @ManyToMany //c**
+    public CarInformationDto carInformationDto(){
+        return CarInformationDto.builder()
+                .id(id)
+                .carModel(carModel)
+                .initialMileage(initialMileage)
+                .finaleMileage(finaleMileage)
+                .vinNr(vinNr)
+                .amountOfFuel(amountOfFuel)
+                .build();
+    }
+
+    @ManyToMany
     @JoinTable(
             name = "damages_cars",
             joinColumns = @JoinColumn(name = "car_id"),
@@ -52,7 +73,4 @@ public class Car {
         this.vinNr = vinNr;
     }
 
-    public Car() {
-
-    }
 }

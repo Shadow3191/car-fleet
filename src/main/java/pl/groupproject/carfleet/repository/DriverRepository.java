@@ -7,4 +7,6 @@ import pl.groupproject.carfleet.model.Driver;
 @Repository
 public interface DriverRepository extends JpaRepository<Driver, Long> {
 
+    Driver findByLogin(String login);
+
 }

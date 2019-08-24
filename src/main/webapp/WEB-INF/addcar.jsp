@@ -12,7 +12,7 @@
 </head>
 <body>
  <h1>Dodaj auto</h1>
-<form modelAttribute="carForm" method="post">
+<form modelAttribute="car" method="post">
 
     <label for="carModel"><b>Model</b></label>
     <input type="text" placeholder="Podaj model" name="carModel" required><p></p>
@@ -29,7 +29,7 @@
     <label for="amountOfFuel"><b>Stan paliwa</b></label>
     <input type="amountOfFuel" placeholder="stan paliwa" name="amountOfFuel" required><p></p>
     <hr>
- <button type="submit" class="registerbtn">Register</button>
+ <button type="submit" class="registerbtn">Zapisz</button>
  </form>
 </body>
 </html>
