@@ -12,7 +12,7 @@
 
 <body>
 <%--@elvariable id="driverLog" type="java"--%>
-<form:form method="post" action="/login">
+<form method="post" action="/authenticate">
 
     <div class="container">
         <h1>LOGIN</h1>
@@ -33,7 +33,7 @@
         </div>
 
     </div>
-</form:form>
+</form>
 
 </body>
 </html>
