@@ -1,5 +1,6 @@
 package pl.groupproject.carfleet.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -7,14 +8,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.groupproject.carfleet.model.Driver;
+import pl.groupproject.carfleet.repository.DriverRepository;
 import pl.groupproject.carfleet.service.DriverService;
 import pl.groupproject.carfleet.validator.UserValidator;
 
 @Controller
 public class DriverController {
 
+    @Autowired
+    private DriverRepository driverRepository;
+    @Autowired
     private DriverService driverService;
-
+    @Autowired
     private UserValidator userValidator;
 
     @GetMapping("/registration")

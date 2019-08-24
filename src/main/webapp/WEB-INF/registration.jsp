@@ -8,26 +8,26 @@
     <title>Registration</title>
 </head>
 <body>
-<form>
+<form:form action="" method="post" modelAttribute="driverForm">
     <div class="container">
         <h1>Register</h1>
         <p>Please fill in this form to create an account.</p>
         <hr>
 
-        <label for="login"><b>Login</b></label>
-        <input type="text" placeholder="Enter Login" name="login" required>
+        <form:label path="login"><b>Login</b></form:label>
+        <form:input path="login" type="text" placeholder="Enter Login" name="login" required=""/>
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
+        <form:label path="email"><b>Email</b></form:label>
+        <form:input path="email" type="text" placeholder="Enter Email" name="email" required=""/>
 
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
+        <form:label path="password"><b>Password</b></form:label>
+        <form:input path="password" type="password" placeholder="Enter Password" name="password" required=""/>
 
-        <label for="password"><b>Repeat Password</b></label>
-        <input type="password" placeholder="Repeat Password" name="password" required>
+        <form:label path="password"><b>Repeat Password</b></form:label>
+        <form:input path="passwordConfirm" type="password" placeholder="Repeat Password" name="password" required=""/>
         <hr>
         <button type="submit" class="registerbtn">Register</button>
     </div>
-</form>
+</form:form>
 </body>
 </html>

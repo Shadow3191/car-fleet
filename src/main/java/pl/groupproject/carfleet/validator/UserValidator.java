@@ -1,6 +1,7 @@
 package pl.groupproject.carfleet.validator;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -12,6 +13,7 @@ import pl.groupproject.carfleet.service.DriverService;
 @Component
 public class UserValidator implements Validator {
 
+    @Autowired
     private DriverService driverService;
 
     @Override
@@ -23,7 +25,7 @@ public class UserValidator implements Validator {
     public void validate(Object o, Errors errors) {
         Driver driver = (Driver) o;
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "NotEmpty");
         if (driver.getLogin().length() < 3 || driver.getLogin().length() > 32){
             errors.rejectValue("login", "Size.driverForm.login");
         }
