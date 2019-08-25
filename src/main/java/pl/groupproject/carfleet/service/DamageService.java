@@ -12,6 +12,8 @@ public interface DamageService {
 
     void addDamages(Damage carsDamage);
 
+    void save(Damage damageList);
+
 
     //dodawanie, usuwanie, lista, wyszukiwanie, usuwanie jednego po id_car czy damage, usuwanie wszystkich
 }

@@ -7,39 +7,41 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+import pl.groupproject.carfleet.dto.CarInformationDto;
 import pl.groupproject.carfleet.model.Damage;
-import pl.groupproject.carfleet.model.DamageType;
-import pl.groupproject.carfleet.service.CarService;
 import pl.groupproject.carfleet.service.DamageService;
 
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public class DomageController {
+public class DamageController {
 
-    private final CarService service;
     private final DamageService damageService;
 
-//    @GetMapping("/damages")
-//    public String allDomages(Model model) {
-//        List<Damage> damages = damageService.getAll();
-//        model.addAttribute("damageList", damages);
-//        return "damages";
-//    }
-
-    @GetMapping("/addDamage")
-    public String addDamages(Model model) {
-        model.addAttribute("carsDamage", new Damage());
-        return "addDamage";
+    @GetMapping("/adddamage")
+    ModelAndView createAddDamageView() {
+        ModelAndView modelAndView = new ModelAndView("adddamage");
+        modelAndView.addObject("damage", new Damage());
+        return modelAndView;
     }
 
-    @PostMapping("/addDamage")
-    public String registration(@ModelAttribute("carsDamage") Damage carsDamage, BindingResult bindingResult) {
+    @PostMapping("/adddamage")
+    public String registration(@ModelAttribute("damage") Damage carsDamage, BindingResult bindingResult) {
         damageService.addDamages(carsDamage);
 
         return "redirect:/damages";
     }
+
+
+    @GetMapping("/damages")
+    public String damages(Model model) {
+        List<Damage> damages = damageService.getAll();
+        model.addAttribute("damagesList", damages);
+        return "damages";
+    }
+
 
     //dodawanie, usuwanie, lista, wyszukiwanie, usuwanie jednego po id_car czy damage, usuwanie wszystkich
 

@@ -37,4 +37,8 @@ public class Damage {
     @OneToMany(mappedBy = "damages")
     private Set<Driver> drivers;
 
+    public boolean getDrivable() {
+        return drivable;
+    }
+
 }
