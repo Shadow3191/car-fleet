@@ -1,14 +1,15 @@
 package pl.groupproject.carfleet.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.groupproject.carfleet.model.Departure;
 import pl.groupproject.carfleet.model.Driver;
 import pl.groupproject.carfleet.repository.DriverRepository;
 import pl.groupproject.carfleet.repository.RoleRepository;
 
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -31,5 +32,6 @@ public class DriverServiceImpl implements DriverService {
     public Driver findByLogin(String login) {
         return driverRepository.findByLogin(login);
     }
+
 
 }
