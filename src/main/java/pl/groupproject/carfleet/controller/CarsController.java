@@ -31,12 +31,6 @@ public class CarsController {
         return "cars";
     }
 
-//    @GetMapping("/addcar")
-//    public String addCar(Model model) {
-//        model.addAttribute("carsForm", new Car());
-//        return "addcar";
-//    }
-
     @GetMapping("/addcar")
     ModelAndView createAddCarView() {
         ModelAndView modelAndView = new ModelAndView("addcar");
@@ -51,9 +45,5 @@ public class CarsController {
         return "redirect:/cars";
     }
 
-//    @PutMapping("/updatecar")
-//    public String registration(@ModelAttribute("carForm")Car carForm, BindingResult bindingResult){
-//        service.
-//    }
 }
 
