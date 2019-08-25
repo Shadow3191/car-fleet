@@ -34,6 +34,9 @@ public class Car {
     @ManyToMany(mappedBy = "cars")
     private List<Driver> drivers;
 
+    @OneToMany(mappedBy = "car")
+    private Set<Damage> damages;
+
     public CarsDto carsDto(){
         return CarsDto.builder()
                 .id(id)
@@ -51,15 +54,7 @@ public class Car {
                 .amountOfFuel(amountOfFuel)
                 .build();
     }
-
-    @ManyToMany
-    @JoinTable(
-            name = "damages_cars",
-            joinColumns = @JoinColumn(name = "car_id"),
-            inverseJoinColumns = @JoinColumn(name = "damage_id"))
-    private List<Damage> damages;
-
-
+    
     //    @OneToMany(mappedBy = "cars")
 //    private List<Departure> departures;
     @ManyToOne

@@ -3,7 +3,9 @@ package pl.groupproject.carfleet.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.groupproject.carfleet.dto.DamageDto;
 import pl.groupproject.carfleet.model.Damage;
+import pl.groupproject.carfleet.repository.CarRepository;
 import pl.groupproject.carfleet.repository.DamageRepository;
 
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
 public class DamageServiceImpl implements DamageService {
 
     private final DamageRepository damageRepository;
-
+    private final CarRepository carRepository;
 
     @Override
     public List<Damage> getAll() {
@@ -21,8 +23,14 @@ public class DamageServiceImpl implements DamageService {
     }
 
     @Override
-    public void addDamages(Damage carsDamage) {
-        damageRepository.save(carsDamage);
+    public void addDamages(DamageDto carsDamage) {
+        Damage damage = Damage.builder()
+                .damageType(carsDamage.getDamageType())
+                .description(carsDamage.getDescription())
+                .drivable(carsDamage.isDrivable())
+                .car(carRepository.findById(carsDamage.getCarId()).get())
+                .build();
+        damageRepository.save(damage);
     }
 
     @Override
