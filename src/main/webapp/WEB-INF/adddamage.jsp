@@ -28,6 +28,23 @@
     <option>  false </option>
     </select>
 
+    <%--<label for="carModel"><b>Car Model</b></label>--%>
+    <%--<select name="carModel">--%>
+        <%--&lt;%&ndash;<option>&ndash;%&gt;--%>
+            <%--&lt;%&ndash;<c:forEach items="${carslist}" var="car">&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<table cellspacing="0" cellpadding="0" border="4" style="width: 25%;">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<tbody>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<tr>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td>${car.carModel}</td>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</tr>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</tbody>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;</table>&ndash;%&gt;--%>
+            <%--&lt;%&ndash;</c:forEach>&ndash;%&gt;--%>
+        <%--&lt;%&ndash;</option>&ndash;%&gt;--%>
+
+    <%--</select>--%>
+
+
     <p></p>
     <button type="submit" class="registerbtn"> Create </button>
 </form>

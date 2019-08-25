@@ -36,12 +36,13 @@
                         <td>${damage.damageType}</td>
                         <td>${damage.drivable}</td>
                         <td>${damage.description}</td>
+                        <%--<td>${damage.carModel}</td>--%>
+
                     </tr>
                     </tbody>
                 </table>
             </c:forEach>
 
-            <h4 class="text-center"><a href="${contextPath}/welcome">Back to welcome list </a> </h4>
             <h4 class="text-center"><a href="${contextPath}/adddamage">Add new damage </a> </h4>
 
         </div>

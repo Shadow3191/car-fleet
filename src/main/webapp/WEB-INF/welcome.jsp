@@ -28,7 +28,7 @@
 
     </c:if>
 
-    <h4 class="text-center"><a href="${contextPath}/addDamage"> Add damage </a> </h4>
+    <h4 class="text-center"><a href="${contextPath}/adddamage"> Add damage </a> </h4>
     <h4 class="text-center"><a href="${contextPath}/damages"> Damage list </a> </h4>
 
 </div>
