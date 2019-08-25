@@ -22,6 +22,7 @@ public class Damage {
     private String description;
     @Column(name = "can_be_used")
     private boolean drivable;
+    private String carModel; //todo lista wyboru samochodu z bazy findCarByID
 
 
     @ManyToMany(mappedBy = "damages")
@@ -40,5 +41,7 @@ public class Damage {
     public boolean getDrivable() {
         return drivable;
     }
+
+
 
 }
