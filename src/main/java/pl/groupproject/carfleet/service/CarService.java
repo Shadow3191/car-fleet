@@ -14,13 +14,6 @@ public class CarService {
 
     private final CarRepository carRepository;
 
-
-/*    public CarService() {
-        cars.add(new Car("BMW", "25000", "25600", "JPA252646JSK"));
-        cars.add(new Car("Mercedes", "5500", "6100", "MRC5979997JAL"));
-        cars.add(new Car("Mazda", "7300", "24899", "JPA2534422646JSK"));
-    }*/
-
     public void addCar(CarInformationDto car){
         Car carEnitity = Car.builder()
                 .id(car.getId())
