@@ -3,10 +3,12 @@ package pl.groupproject.carfleet.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.groupproject.carfleet.dto.CarInformationDto;
+import pl.groupproject.carfleet.dto.CarSelectDto;
 import pl.groupproject.carfleet.model.Car;
 import pl.groupproject.carfleet.repository.CarRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +30,12 @@ public class CarService {
 
     public List<Car> getAll() {
         return carRepository.findAll();
+    }
+
+    public List<CarSelectDto> getAllForSelect() {
+        return carRepository.findAll().stream()
+                .map(car -> new CarSelectDto(car.getId(), car.getVinNr()))
+                .collect(Collectors.toList());
     }
 
 //    public void updateCar(Car car){
