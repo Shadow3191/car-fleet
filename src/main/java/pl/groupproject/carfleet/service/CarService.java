@@ -21,7 +21,8 @@ public class CarService {
     public void addCar(CarInformationDto car){
         Car carEnitity = Car.builder()
                 .id(car.getId())
-                .carBrand((car.getCarModel()))
+                .carBrand(car.getCarBrand())
+                .carModel(car.getCarModel())
                 .initialMileage(car.getInitialMileage())
                 .finaleMileage(car.getFinaleMileage())
                 .vinNr(car.getVinNr())

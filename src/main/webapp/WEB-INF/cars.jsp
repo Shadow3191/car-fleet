@@ -13,25 +13,28 @@
 </head>
 <body>
     <h1>Auta</h1>
+    <table cellspacing="0" cellpadding="0" border="4" table-layout: auto>
 <tbody>
-    <tr>
-        <th>Marka</th>
-        <th>Model</th>
-        <th>Numer VIN</th>
-        <th>Rezerwacja</th>
-        <th></th>
-    </tr>
+
 </tbody>
+        <tr>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Numer VIN</th>
+            <th>Czy zarezerwowany</th>
+            <th>Rezerwacja</th>
+            <th></th>
+        </tr>
         <c:forEach items="${carslist}" var="car">
-                 <table cellspacing="0" cellpadding="0" border="4" style="width: 25%;">
+                 <table cellspacing="0" cellpadding="0" border="4" table-layout: auto>
                      <tbody>
 
                         <tr>
                             <form action="/cars" method="post">
-                            <td>${car.carModel}</td>
-                            <td>${car.carBrand}</td>
-                            <td>${car.vinNr}</td>
-                            <td>${car.reservation}</td>
+                                <td>${car.carBrand}</td>
+                                <td>${car.carModel}</td>
+                                <td>${car.vinNr}</td>
+                                <td>${car.reservation}</td>
                             <td>
                                 <c:if test="${car.reservation==true}">
                                 <button name = "msg" value=${car.id} type="submit" class="registerbtn">Zwróć</button>

@@ -14,6 +14,9 @@
  <h1>Dodaj auto</h1>
 <form modelAttribute="car" method="post">
 
+    <label for="carBrand"><b>Marka auta</b></label>
+    <input type="text" placeholder="Podaj makrę" name="carBrand" required><br>
+
     <label for="carModel"><b>Model</b></label>
     <input type="text" placeholder="Podaj model" name="carModel" required><br>
 
