@@ -21,10 +21,10 @@
         <input path="email" type="text" placeholder="Enter Email" name="email"/><br>
 
         <label path="password"><b>Password</b></label>
-        <input path="password" type="password" placeholder="Enter Password" name="password"/><br>
+        <input path="password" type="text" placeholder="Enter Password" name="password"/><br>
 
         <label path="passwordConfirm"><b>Repeat Password</b></label>
-        <input path="passwordConfirm" type="password" placeholder="Repeat Password" name="passwordConfirm"/><br>
+        <input path="passwordConfirm" type="text" placeholder="Repeat Password" name="passwordConfirm"/><br>
 
         <label path="pesel"><b>Pesel</b></label>
         <input path="pesel" type="text" placeholder="Enter PESEL" name="pesel"/><br>

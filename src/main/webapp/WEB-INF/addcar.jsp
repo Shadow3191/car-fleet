@@ -15,21 +15,21 @@
 <form modelAttribute="car" method="post">
 
     <label for="carModel"><b>Model</b></label>
-    <input type="text" placeholder="Podaj model" name="carModel" required><p></p>
+    <input type="text" placeholder="Podaj model" name="carModel" required><br>
 
     <label for="initialMileage"><b>Początkowy stan licznika</b></label>
-    <input type="text" placeholder="stan początkowy licznika" name="initialMileage" required><p></p>
+    <input type="text" placeholder="stan początkowy licznika" name="initialMileage" required><br>
 
     <label for="finaleMileage"><b>Końcowy stan licznika</b></label>
-    <input type="text" placeholder="Enter final milage" name="finaleMileage" required><p></p>
+    <input type="text" placeholder="Enter final milage" name="finaleMileage" required><br>
 
     <label for="vinNr"><b>Numer VIN</b></label>
-    <input type="text" placeholder="Podaj nr VIN" name="vinNr" required><p></p>
+    <input type="text" placeholder="Podaj nr VIN" name="vinNr" required><<br>
 
     <label for="amountOfFuel"><b>Stan paliwa</b></label>
-    <input type="amountOfFuel" placeholder="stan paliwa" name="amountOfFuel" required><p></p>
+    <input type="amountOfFuel" placeholder="stan paliwa" name="amountOfFuel" required><br>
     <hr>
- <button type="submit" class="registerbtn">Zapisz</button>
+ <button type="submit" class="registerbtn">Zarezerwuj</button>
  </form>
 </body>
 </html>

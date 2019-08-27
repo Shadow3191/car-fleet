@@ -1,6 +1,5 @@
 package pl.groupproject.carfleet.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import pl.groupproject.carfleet.dto.CarInformationDto;
@@ -8,7 +7,6 @@ import pl.groupproject.carfleet.dto.CarsDto;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 //@Embeddable
 @Getter
@@ -25,11 +23,13 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
+    private String carBrand;
     private String carModel;
     private String initialMileage;
     private String finaleMileage;
     private String vinNr;
     private int amountOfFuel;
+    private boolean reservation;
 
     @ManyToMany(mappedBy = "cars")
     private List<Driver> drivers;
@@ -37,14 +37,14 @@ public class Car {
     public CarsDto carsDto(){
         return CarsDto.builder()
                 .id(id)
-                .carModel(carModel)
+                .carModel(carBrand)
                 .build();
     }
 
     public CarInformationDto carInformationDto(){
         return CarInformationDto.builder()
                 .id(id)
-                .carModel(carModel)
+                .carModel(carBrand)
                 .initialMileage(initialMileage)
                 .finaleMileage(finaleMileage)
                 .vinNr(vinNr)
@@ -67,7 +67,7 @@ public class Car {
     private Departure departures;
 
     public Car(String carModel, String initialMileage, String finaleMileage, String vinNr) {
-        this.carModel = carModel;
+        this.carBrand = carModel;
         this.initialMileage = initialMileage;
         this.finaleMileage = finaleMileage;
         this.vinNr = vinNr;

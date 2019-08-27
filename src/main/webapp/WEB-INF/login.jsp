@@ -25,7 +25,7 @@
             <input path="username" type="text" placeholder="Enter Login" name="username"/><br>
 
             <label path="password"><b>Password</b></label>
-            <input path="password" type="password" placeholder="Enter Password" name="password"/><br>
+            <input path="password" type="text" placeholder="Enter Password" name="password"/><br>
 
             <span>${error}</span>
 

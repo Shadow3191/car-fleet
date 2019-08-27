@@ -3,10 +3,14 @@ package pl.groupproject.carfleet.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.groupproject.carfleet.dto.CarInformationDto;
+import pl.groupproject.carfleet.dto.CarsDto;
 import pl.groupproject.carfleet.model.Car;
 import pl.groupproject.carfleet.repository.CarRepository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -17,7 +21,7 @@ public class CarService {
     public void addCar(CarInformationDto car){
         Car carEnitity = Car.builder()
                 .id(car.getId())
-                .carModel((car.getCarModel()))
+                .carBrand((car.getCarModel()))
                 .initialMileage(car.getInitialMileage())
                 .finaleMileage(car.getFinaleMileage())
                 .vinNr(car.getVinNr())
@@ -25,14 +29,25 @@ public class CarService {
                 .build();
         carRepository.save(carEnitity);
     }
+    private CarsDto mupToDto(Car car){
+        return new CarsDto(car.getId(),car.getCarBrand(), car.getCarModel(), car.getVinNr(), car.isReservation());
+    }
 
-    public List<Car> getAll() {
-        return carRepository.findAll();
+
+    public List<CarsDto> getAll() {
+        return carRepository.findAll().stream().map(this::mupToDto).collect(Collectors.toList());
+    }
+
+    public void makeReservation(String id){
+        Optional<Car> byId = carRepository.findById(Long.valueOf(id));
+        Car car = byId.get();
+        car.setReservation(!car.isReservation());
+        carRepository.save(car);
     }
 
 //    public void updateCar(Car car){
 //        cars. // ???
 //    }
 
-    // ogarnac sobie zapisywanie
+
 }

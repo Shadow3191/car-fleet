@@ -13,14 +13,34 @@
 </head>
 <body>
     <h1>Auta</h1>
-
-<%--     zrobic do tego tabelke--%>
-
+<tbody>
+    <tr>
+        <th>Marka</th>
+        <th>Model</th>
+        <th>Numer VIN</th>
+        <th>Rezerwacja</th>
+        <th></th>
+    </tr>
+</tbody>
         <c:forEach items="${carslist}" var="car">
                  <table cellspacing="0" cellpadding="0" border="4" style="width: 25%;">
                      <tbody>
+
                         <tr>
+                            <form action="/cars" method="post">
                             <td>${car.carModel}</td>
+                            <td>${car.carBrand}</td>
+                            <td>${car.vinNr}</td>
+                            <td>${car.reservation}</td>
+                            <td>
+                                <c:if test="${car.reservation==true}">
+                                <button name = "msg" value=${car.id} type="submit" class="registerbtn">Zwróć</button>
+                                </c:if>
+                                <c:if test="${car.reservation==false}">
+                                    <button name = "msg" value=${car.id} type="submit" class="registerbtn">Zarezerwuj</button>
+                                </c:if>
+                            </td>
+                            </form>
                         </tr>
                      </tbody>
                  </table>
