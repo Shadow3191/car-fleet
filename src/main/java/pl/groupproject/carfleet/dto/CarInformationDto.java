@@ -10,6 +10,7 @@ import lombok.*;
 @EqualsAndHashCode
 public class CarInformationDto {
     private Long id;
+    private String carBrand;
     private String carModel;
     private String initialMileage;
     private String finaleMileage;
