@@ -27,7 +27,7 @@ public class Damage {
     private DamageType damageType;
     private String description;
     @Column(name = "can_be_used")
-    private boolean drivable;
+    private boolean drivable=false;
 
     @ManyToMany(mappedBy = "damages")
     private Set<Departure> departures;
@@ -39,8 +39,7 @@ public class Damage {
     @OneToMany(mappedBy = "damages")
     private Set<Driver> drivers;
 
-    public boolean isDrivable() {
-        return drivable;
+    public boolean isDrivable() { return drivable;
     }
 
     public boolean getDrivable() {

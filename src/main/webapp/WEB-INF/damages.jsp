@@ -24,10 +24,10 @@
         <th>l.p</th>
         <th>Damage Type</th>
         <th>Description</th>
-        <th>Drivable</th>
+        <%--<th>Drivable</th>--%>
         <th>Car Model</th>
         <th>Car vin</th>
-        <th>Car repair</th>
+        <th>Car can be use</th>
     </tr>
     </thead>
     <c:forEach items="${damagesList}" var="damage">
@@ -37,16 +37,16 @@
             <td>${damage.id}</td>
             <td>${damage.damageType}</td>
             <td>${damage.description}</td>
-            <td>${damage.drivable}</td>
+            <%--<td>${damage.drivable}</td>--%>
             <td>${damage.car.carModel}</td>
             <td>${damage.car.vinNr}</td>
 
             <td>
                 <c:if test="${damage.drivable==true}">
-                    <button name = "msg" value=${damage.id} type="submit" class="registerbtn">ok</button>
+                    <p name = "msg" value=${damage.id} type="submit" class="registerbtn"> car drivable </p>
                 </c:if>
                 <c:if test="${damage.drivable==false}">
-                    <button name = "msg" value=${damage.id} type="submit" class="registerbtn">is repair</button>
+                    <button name = "msg" value=${damage.id} type="submit" class="registerbtn">repair car</button>
                 </c:if>
             </td>
         </form>
