@@ -1,3 +1,4 @@
+
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -15,7 +16,7 @@
                 <th>Czy zarezerwowany</th>
                 <th>Rezerwacja</th>
                 <th>Aktualizacja</th>
-                <th></th>
+                  <th></th>
             </tr>
         </thead>
         <c:forEach items="${carslist}" var="car">

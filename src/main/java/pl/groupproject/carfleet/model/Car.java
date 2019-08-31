@@ -1,5 +1,13 @@
 package pl.groupproject.carfleet.model;
 
+import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import pl.groupproject.carfleet.dto.CarInformationDto;
+import pl.groupproject.carfleet.dto.CarsDto;
+
+import javax.persistence.*;
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -44,7 +52,16 @@ public class Car {
                 .amountOfFuel(amountOfFuel)
                 .build();
     }
-    
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "damages_cars",
+            joinColumns = @JoinColumn(name = "car_id"),
+            inverseJoinColumns = @JoinColumn(name = "damage_id"))
+    private List<Damage> damages;
+
+
     @ManyToOne
     @JoinColumn(name = "departures_id")
     private Departure departures;
