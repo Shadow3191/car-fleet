@@ -30,4 +30,9 @@ public class DepartureServiceImpl implements DepartureService {
     public List<Departure> getAll(){
         return departureRepository.findAll();
     }
+
+    @Override
+    public void delete(Long id) {
+        departureRepository.deleteDepartureById(id);
+    }
 }

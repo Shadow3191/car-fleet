@@ -15,4 +15,6 @@ public interface DepartureService {
     Departure findByDepFrom(String depFrom);
 
     List<Departure> getAll();
+
+    void delete(Long id);
 }

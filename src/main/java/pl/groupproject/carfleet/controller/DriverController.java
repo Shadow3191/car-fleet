@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import pl.groupproject.carfleet.model.Driver;
 import pl.groupproject.carfleet.security.SecurityService;
 import pl.groupproject.carfleet.service.DriverService;
 import pl.groupproject.carfleet.validator.UserValidator;
+
+import java.util.List;
 
 @Controller
 public class DriverController {
@@ -30,16 +30,16 @@ public class DriverController {
     }
 
     @GetMapping("/registration")
-    public String registration(Model model){
+    public String registration(Model model) {
         model.addAttribute("driverForm", new Driver());
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String registration(@ModelAttribute("driverForm") Driver driverForm, BindingResult bindingResult){
+    public String registration(@ModelAttribute("driverForm") Driver driverForm, BindingResult bindingResult) {
         userValidator.validate(driverForm, bindingResult);
 
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return "/registration";
         }
         driverService.save(driverForm);
@@ -47,7 +47,7 @@ public class DriverController {
         return "redirect:/welcome";
     }
 
-    @GetMapping ("/login")
+    @GetMapping("/login")
     public String login(Model model, String error, String logout) {
         if (error != null)
             model.addAttribute("error", "Your username and password is invalid.");
@@ -66,4 +66,21 @@ public class DriverController {
     public SecurityService getSecurityService() {
         return securityService;
     }
+
+    @PutMapping("/driverslist/newemail")
+    public String changeEmail(@PathVariable Long id, @RequestBody String newEmail) {
+        return driverService.changeEmail(id, newEmail);
+    }
+    @GetMapping("/driverslist/newemail")
+    public String newMail(Model model){
+        return "driverslist/newemail";
+    }
+
+    @RequestMapping("/driverslist")
+    public String allDrivers(Model model) {
+        List<Driver> driverList = driverService.getAll();
+        model.addAttribute("driverForm", driverList);
+        return "driverslist";
+    }
+
 }

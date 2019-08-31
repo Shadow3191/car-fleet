@@ -33,6 +33,7 @@
     <a href="/adddamage" target="/adddamage"><button>Add damage</button></a><br>
     <a href="/damages" target="/damages"><button>Damage list</button></a><br>
     <a href="/update" target="/update"><button>Aktualizacja pojazdu</button></a><br>
+    <a href="/driverslist" target="/driverslist"><button>User profile</button></a><br>
 </div>
 
 </body>
