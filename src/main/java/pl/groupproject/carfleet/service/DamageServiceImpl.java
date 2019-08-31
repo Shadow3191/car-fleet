@@ -47,6 +47,7 @@ public class DamageServiceImpl implements DamageService {
     public void makeRepair(String id) {
         Optional<Damage> byId = damageRepository.findById(Long.valueOf(String.valueOf(id)));
         Damage damage = byId.get();
+
         if (damage.isDrivable() == false) {
             damage.setDrivable(!damage.isDrivable());
         }

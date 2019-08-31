@@ -55,10 +55,6 @@ public class DamageController {
     }
 
     @PostMapping("/damages")
-//    public String repair(@ModelAttribute("drivable") Damage id, BindingResult bindingResult){
-//        damageService.makeRepair(id);
-//        return "redirect:/damages";
-//    }
     public String repair(HttpServletRequest request) {
         String id = request.getParameter("msg");
         damageService.makeRepair(id);
