@@ -3,6 +3,7 @@ package pl.groupproject.carfleet.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.groupproject.carfleet.dto.CarInformationDto;
+import pl.groupproject.carfleet.dto.CarSelectDto;
 import pl.groupproject.carfleet.dto.CarsDto;
 import pl.groupproject.carfleet.model.Car;
 import pl.groupproject.carfleet.repository.CarRepository;
@@ -33,6 +34,11 @@ public class CarService {
         return new CarsDto(car.getId(),car.getCarBrand(), car.getCarModel(), car.getVinNr(), car.isReservation(), car.getCarUpdate());
     }
 
+    public List<CarSelectDto> getAllForSelect() {
+        return carRepository.findAll().stream()
+                .map(car -> new CarSelectDto(car.getId(), car.getVinNr()))
+                .collect(Collectors.toList());
+    }
 
     public List<CarsDto> getAll() {
         return carRepository.findAll().stream().map(this::mupToDto).collect(Collectors.toList());
