@@ -1,5 +1,8 @@
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
 <html>
 <head>
     <title>Departures</title>
@@ -19,6 +22,7 @@
         </tr>
         </tbody>
     </table>
+    <a href="/welcome" target="/welcome"><button>Back to welcome page</button></a><br>
 </c:forEach>
 
 </body>

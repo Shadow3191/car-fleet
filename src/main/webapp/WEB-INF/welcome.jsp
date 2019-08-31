@@ -20,7 +20,7 @@
 
     <c:if test="${pageContext.request.userPrincipal.login != null}">
         <form id="logoutForm" method="POST" action="${contextPath}/logout">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <input  name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </form>
 
         <h2>Welcome ${pageContext.request.userPrincipal.name} |
@@ -33,8 +33,6 @@
     <a href="/adddamage" target="/adddamage"><button>Add damage</button></a><br>
     <a href="/damages" target="/damages"><button>Damage list</button></a><br>
     <a href="/update" target="/update"><button>Aktualizacja pojazdu</button></a><br>
-
-
 </div>
 
 </body>

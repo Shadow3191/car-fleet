@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <html lang="en">
@@ -26,22 +27,25 @@
                     <tr>
                         <th>l.p</th>
                         <th>Damage Type</th>
-                        <th>Drivable</th>
                         <th>Description</th>
+                        <th>Drivable</th>
+                        <th>Car MOdel</th>
+
                     </tr>
 
                     <tbody>
                     <tr>
                         <td>${damage.id}</td>
                         <td>${damage.damageType}</td>
-                        <td>${damage.drivable}</td>
                         <td>${damage.description}</td>
+                        <td>${damage.drivable}</td>
+                        <td>${damage.car.carModel}</td>
+
                     </tr>
                     </tbody>
                 </table>
             </c:forEach>
 
-            <h4 class="text-center"><a href="${contextPath}/welcome">Back to welcome list </a> </h4>
             <h4 class="text-center"><a href="${contextPath}/adddamage">Add new damage </a> </h4>
 
         </div>

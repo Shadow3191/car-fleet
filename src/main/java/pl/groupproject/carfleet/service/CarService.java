@@ -45,15 +45,4 @@ public class CarService {
         carRepository.save(car);
     }
 
-//    public void updateCar(String id, CarsDto carsDto){
-//        Optional<Car> byId = carRepository.findById(Long.valueOf(id));
-//        Car car = byId.get();
-//        car.setCarUpdate(car.getCarUpdate());
-//        carRepository.save(car);
-//    }
-//
-//
-//
-//    public void updateCar(CarsDto carForm) {
-//    }
 }
