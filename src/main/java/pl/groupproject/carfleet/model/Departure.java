@@ -28,15 +28,10 @@ public class Departure {
             inverseJoinColumns = @JoinColumn(name = "damage_id"))
     private List<Damage> damages;
 
-    //    @ManyToOne
-//    @JoinColumn(name = "drivers_id")
-//    private Driver driver; //nie może być lista
+
     @OneToMany(mappedBy = "departures")
     private List<Driver> drivers;
 
-//    @ManyToOne
-//    @JoinColumn(name = "cars_id")
-//    private Car car;
 
     @OneToMany(mappedBy = "departures")
     private List<Car> cars;

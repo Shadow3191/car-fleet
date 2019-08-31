@@ -5,21 +5,22 @@
 
 <html>
 <head>
-    <title>Departures</title>
+    <title>Drivers</title>
 </head>
 <body>
-<h1>Departures</h1>
+<h1>Drivers</h1>
 
 
-<c:forEach items="${departureForm}" var="departureRepository">
+<c:forEach items="${driverForm}" var="driver">
     <table cellspacing="0" cellpadding="0" border="4" style="width: 25%;">
         <tbody>
         <tr>
-            <td>${departureRepository.id}</td>
-            <td>${departureRepository.depFrom}</td>
-            <td>${departureRepository.depTo}</td>
-            <td>${departureRepository.distance}</td>
-            <td><a href="/departurelist/delete/${departureRepository.id}">Delete</a></td>
+            <td>${driver.id}</td>
+            <td>${driver.login}</td>
+            <td>${driver.email}</td>
+            <td>${driver.firstName}</td>
+            <td>${driver.lastName}</td>
+            <td><a href="/driverslist/newemail" target="/driverslist/newmail"><button>change e-mail</button></a></td>
         </tr>
         </tbody>
     </table>

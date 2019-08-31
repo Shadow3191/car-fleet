@@ -1,12 +1,12 @@
 package pl.groupproject.carfleet.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.groupproject.carfleet.model.Departure;
+import pl.groupproject.carfleet.repository.DepartureRepository;
 import pl.groupproject.carfleet.service.DepartureService;
 
 import java.util.List;
@@ -17,6 +17,8 @@ public class DepartureController {
 
 
     private final DepartureService service;
+
+    private final DepartureRepository repository;
 
     @GetMapping("/departure")
     public String addDeparture(Model model) {
@@ -36,5 +38,11 @@ public class DepartureController {
         List<Departure> departures = service.getAll();
         model.addAttribute("departureForm", departures);
         return "departurelist";
+    }
+
+    @GetMapping("/departurelist/delete/{id}")
+    public String delete (@PathVariable Long id) {
+        repository.deleteById(id);
+        return "redirect:/departurelist";
     }
 }

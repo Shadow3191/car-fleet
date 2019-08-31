@@ -8,4 +8,6 @@ import pl.groupproject.carfleet.model.Departure;
 public interface DepartureRepository extends JpaRepository<Departure, Long> {
 
     Departure findByDepFrom(String depFrom);
+
+    void deleteDepartureById(Long id);
 }
