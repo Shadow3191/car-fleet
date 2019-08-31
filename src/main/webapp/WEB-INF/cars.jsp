@@ -21,10 +21,11 @@
                      <tbody>
                         <tr>
                             <td>${car.carModel}</td>
+                            <td>${car.carsDto().vinNr}</td>
+                            <td><a href="/cars" target="/cars"><button>${car.carsDto().reservation}</button></a><br></td>
                         </tr>
                      </tbody>
                  </table>
         </c:forEach>
-
 </body>
 </html>

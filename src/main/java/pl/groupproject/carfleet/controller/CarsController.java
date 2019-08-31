@@ -1,10 +1,9 @@
 package pl.groupproject.carfleet.controller;
 
-import com.sun.xml.fastinfoset.util.CharArrayIntMap;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,8 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.groupproject.carfleet.dto.CarInformationDto;
 import pl.groupproject.carfleet.dto.CarsDto;
 import pl.groupproject.carfleet.model.Car;
-import pl.groupproject.carfleet.model.Driver;
 import pl.groupproject.carfleet.service.CarService;
+
 
 import java.util.List;
 
@@ -39,11 +38,11 @@ public class CarsController {
     }
 
     @PostMapping("/addcar")
-    public String registration(@ModelAttribute("car") CarInformationDto carForm, BindingResult bindingResult) {
+    public String registration(@ModelAttribute("car") CarInformationDto carForm) {
         service.addCar(carForm);
 
         return "redirect:/cars";
     }
 
-}
 
+}

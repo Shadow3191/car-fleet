@@ -12,4 +12,6 @@ import lombok.NoArgsConstructor;
 public class CarsDto {
     private Long id;
     private String carModel;
+    private String vinNr;
+    private boolean reservation;
 }

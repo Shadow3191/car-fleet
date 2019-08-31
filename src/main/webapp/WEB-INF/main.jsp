@@ -23,14 +23,7 @@
     <a href="/login" target="/login"><button>Login</button></a><br>
 
 
-    <p></p>
-    <a href="/addcar" target="/addcar"><button>Add car</button></a><br>
-    <a href="/departure" target="/departure"><button>Add departure</button></a><br>
-    <a href="/adddamage" target="/adddamage"><button>Add damage</button></a><br>
-    <a href="/cars" target=/cars"><button>Cars list</button></a><br>
-    <a href="/damages" target="/damages"><button>Damage list</button></a><br>
-    <a href="/departure" target="/damages"><button>Damage list</button></a><br>
-    <a href="/departurelist" target="/departurelist"><button>Departures list</button></a><br>
+
 
 
 </div>

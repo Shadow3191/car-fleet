@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-//@Embeddable
+
 @Getter
 @Setter
 @Entity
@@ -30,6 +30,7 @@ public class Car {
     private String finaleMileage;
     private String vinNr;
     private int amountOfFuel;
+    private boolean reservation;
 
     @ManyToMany(mappedBy = "cars")
     private List<Driver> drivers;
@@ -41,6 +42,8 @@ public class Car {
         return CarsDto.builder()
                 .id(id)
                 .carModel(carModel)
+                .vinNr(vinNr)
+                .reservation(reservation)
                 .build();
     }
 
