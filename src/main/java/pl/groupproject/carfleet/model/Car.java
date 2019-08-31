@@ -30,6 +30,8 @@ public class Car {
     private int amountOfFuel;
     private boolean reservation;
     private String carUpdate;
+    private String deleteCar;
+
 
     @ManyToMany(mappedBy = "cars")
     private List<Driver> drivers;
@@ -38,6 +40,7 @@ public class Car {
         return CarsDto.builder()
                 .id(id)
                 .carModel(carModel)
+                .carBrand(carBrand)
                 .build();
     }
 

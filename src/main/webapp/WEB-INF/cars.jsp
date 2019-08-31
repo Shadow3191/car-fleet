@@ -16,27 +16,30 @@
                 <th>Czy zarezerwowany</th>
                 <th>Rezerwacja</th>
                 <th>Aktualizacja</th>
-                  <th></th>
+                <th>Usunięcie</th>
             </tr>
         </thead>
         <c:forEach items="${carslist}" var="car">
              <tbody>
                 <tr>
-                    <form action="/cars" method="post">
                         <td>${car.carBrand}</td>
                         <td>${car.carModel}</td>
                         <td>${car.vinNr}</td>
                         <td>${car.reservation}</td>
+
     <%--                                <td>${car.carUpdate}</td>--%>
                     <td>
-                        <c:if test="${car.reservation==true}">
-                        <button name = "msg" value=${car.id} type="submit" class="registerbtn">Zwróć</button>
-                        </c:if>
-                        <c:if test="${car.reservation==false}">
-                            <button name = "msg" value=${car.id} type="submit" class="registerbtn">Zarezerwuj</button>
-                        </c:if>
+                        <form action="/cars" method="post">
+                            <c:if test="${car.reservation==true}">
+                            <button name = "msg" value=${car.id} type="submit" class="registerbtn">Zwróć</button>
+                            </c:if>
+                            <c:if test="${car.reservation==false}">
+                                <button name = "msg" value=${car.id} type="submit" class="registerbtn">Zarezerwuj</button>
+                            </c:if>
+                        </form>
                     </td>
-                    </form>
+                    <td><a href="/editcar/${car.id}">Aktualizuj</a></td>
+                    <td><a href="/cars/delete/${car.id}">Usuń</a></td>
                 </tr>
              </tbody>
         </c:forEach>
