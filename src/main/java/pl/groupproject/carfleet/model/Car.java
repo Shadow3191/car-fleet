@@ -62,8 +62,6 @@ public class Car {
     private List<Damage> damages;
 
 
-    //    @OneToMany(mappedBy = "cars")
-//    private List<Departure> departures;
     @ManyToOne
     @JoinColumn(name = "departures_id")
     private Departure departures;
