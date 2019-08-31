@@ -16,7 +16,7 @@
                 <th>Czy zarezerwowany</th>
                 <th>Rezerwacja</th>
                 <th>Aktualizacja</th>
-                <th></th>
+                  <th></th>
             </tr>
         </thead>
         <c:forEach items="${carslist}" var="car">

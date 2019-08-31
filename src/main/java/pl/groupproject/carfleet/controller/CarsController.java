@@ -34,11 +34,12 @@ public class CarsController {
     }
 
     @PostMapping("/addcar")
-    public String registration(@ModelAttribute("car") CarInformationDto carForm, BindingResult bindingResult) {
+    public String registration(@ModelAttribute("car") CarInformationDto carForm) {
         service.addCar(carForm);
 
         return "redirect:/cars";
     }
+
 
     @PostMapping("/cars")
     public String reservation(HttpServletRequest request) {
@@ -57,5 +58,5 @@ public class CarsController {
 //    }
 
 
+  }
 }
-

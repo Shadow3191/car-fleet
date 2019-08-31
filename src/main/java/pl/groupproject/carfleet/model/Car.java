@@ -8,7 +8,6 @@ import pl.groupproject.carfleet.dto.CarsDto;
 import javax.persistence.*;
 import java.util.List;
 
-
 @Getter
 @Setter
 @Entity
@@ -53,6 +52,7 @@ public class Car {
                 .amountOfFuel(amountOfFuel)
                 .build();
     }
+
 
     @ManyToMany
     @JoinTable(

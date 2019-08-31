@@ -22,6 +22,10 @@
     <a href="/registration" target="/registration"><button>Sign up</button></a><br>
     <a href="/login" target="/login"><button>Login</button></a><br>
 
+
+
+
+
 </div>
 
 </body>

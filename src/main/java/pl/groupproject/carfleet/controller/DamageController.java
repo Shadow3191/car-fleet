@@ -9,26 +9,38 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.groupproject.carfleet.dto.CarInformationDto;
+import pl.groupproject.carfleet.dto.DamageDto;
+import pl.groupproject.carfleet.dto.DamageTypeDto;
 import pl.groupproject.carfleet.model.Damage;
+import pl.groupproject.carfleet.model.DamageType;
+import pl.groupproject.carfleet.service.CarService;
 import pl.groupproject.carfleet.service.DamageService;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
 public class DamageController {
 
     private final DamageService damageService;
+    private final CarService carService;
 
     @GetMapping("/adddamage")
     ModelAndView createAddDamageView() {
         ModelAndView modelAndView = new ModelAndView("adddamage");
-        modelAndView.addObject("damage", new Damage());
+        modelAndView.addObject("damage", new DamageDto());
+        modelAndView.addObject("damageTypes",
+                Arrays.stream(DamageType.values())
+                        .map(val -> new DamageTypeDto(val, val.getLabel()))
+                        .collect(Collectors.toList()));
+        modelAndView.addObject("cars", carService.getAllForSelect());
         return modelAndView;
     }
 
     @PostMapping("/adddamage")
-    public String registration(@ModelAttribute("damage") Damage carsDamage, BindingResult bindingResult) {
+    public String registration(@ModelAttribute("damage") DamageDto carsDamage, BindingResult bindingResult) {
         damageService.addDamages(carsDamage);
 
         return "redirect:/damages";
