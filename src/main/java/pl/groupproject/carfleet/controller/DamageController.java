@@ -16,6 +16,7 @@ import pl.groupproject.carfleet.model.DamageType;
 import pl.groupproject.carfleet.service.CarService;
 import pl.groupproject.carfleet.service.DamageService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,12 +47,18 @@ public class DamageController {
         return "redirect:/damages";
     }
 
-
     @GetMapping("/damages")
     public String damages(Model model) {
         List<Damage> damages = damageService.getAll();
         model.addAttribute("damagesList", damages);
         return "damages";
+    }
+
+    @PostMapping("/damages")
+    public String repair(HttpServletRequest request) {
+        String id = request.getParameter("msg");
+        damageService.makeRepair(id);
+        return "redirect:/damages";
     }
 
 

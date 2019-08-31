@@ -21,11 +21,11 @@
     </form:select>
     <p></p>
 
-    <label for="drivable"><b>Drivable</b></label>
-    <select name="drivable">
-    <option> true </option>
-    <option>  false </option>
-    </select>
+    <%--<label for="drivable"><b>Drivable</b></label>--%>
+    <%--<select name="drivable">--%>
+    <%--&lt;%&ndash;<option> true </option>&ndash;%&gt;--%>
+    <%--<option>  false </option>--%>
+    <%--</select>--%>
 
     </br>
     <label for="Car"><b>Car</b></label>

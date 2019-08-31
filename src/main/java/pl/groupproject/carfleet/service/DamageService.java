@@ -1,6 +1,5 @@
 package pl.groupproject.carfleet.service;
 
-import org.springframework.stereotype.Service;
 import pl.groupproject.carfleet.dto.DamageDto;
 import pl.groupproject.carfleet.model.Damage;
 
@@ -14,6 +13,9 @@ public interface DamageService {
     void addDamages(DamageDto carsDamage);
 
     void save(Damage damageList);
+
+    void makeRepair(String id);
+
 
 
     //dodawanie, usuwanie, lista, wyszukiwanie, usuwanie jednego po id_car czy damage, usuwanie wszystkich

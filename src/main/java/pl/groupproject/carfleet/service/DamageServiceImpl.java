@@ -1,7 +1,6 @@
 package pl.groupproject.carfleet.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.groupproject.carfleet.dto.DamageDto;
 import pl.groupproject.carfleet.model.Damage;
@@ -9,6 +8,7 @@ import pl.groupproject.carfleet.repository.CarRepository;
 import pl.groupproject.carfleet.repository.DamageRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -40,6 +40,18 @@ public class DamageServiceImpl implements DamageService {
         damageList.setDrivable(damageList.getDrivable());
         damageRepository.save(damageList);
 
+    }
+
+
+    @Override
+    public void makeRepair(String id) {
+        Optional<Damage> byId = damageRepository.findById(Long.valueOf(String.valueOf(id)));
+        Damage damage = byId.get();
+
+        if (damage.isDrivable() == false) {
+            damage.setDrivable(!damage.isDrivable());
+        }
+        damageRepository.save(damage);
     }
 
 }
