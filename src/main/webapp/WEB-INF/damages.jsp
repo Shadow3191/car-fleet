@@ -16,40 +16,45 @@
 </head>
 
 <body>
-    <h1>Damages</h1>
+<h1>Damages</h1>
 
-    <form:form method="post" modelAttribute="damagesList">
+<table cellspacing="0" cellpadding="0" border="4" table-layout: auto>
+    <thead>
+    <tr>
+        <th>l.p</th>
+        <th>Damage Type</th>
+        <th>Description</th>
+        <th>Drivable</th>
+        <th>Car Model</th>
+        <th>Car vin</th>
+        <th>Car repair</th>
+    </tr>
+    </thead>
+    <c:forEach items="${damagesList}" var="damage">
+    <tbody>
+    <tr>
+        <form action="/damages" method="post">
+            <td>${damage.id}</td>
+            <td>${damage.damageType}</td>
+            <td>${damage.description}</td>
+            <td>${damage.drivable}</td>
+            <td>${damage.car.carModel}</td>
+            <td>${damage.car.vinNr}</td>
 
-        <div class="container">
+            <td>
+                <c:if test="${damage.drivable==true}">
+                    <button name = "msg" value=${damage.id} type="submit" class="registerbtn">ok</button>
+                </c:if>
+                <c:if test="${damage.drivable==false}">
+                    <button name = "msg" value=${damage.id} type="submit" class="registerbtn">is repair</button>
+                </c:if>
+            </td>
+        </form>
+    </tr>
+    </tbody>
+    </c:forEach>
 
-            <c:forEach items="${damagesList}" var="damage">
-                <table cellspacing="0" cellpadding="0" border="2" style="width: 25%;">
-                    <tr>
-                        <th>l.p</th>
-                        <th>Damage Type</th>
-                        <th>Description</th>
-                        <th>Drivable</th>
-                        <th>Car MOdel</th>
-
-                    </tr>
-
-                    <tbody>
-                    <tr>
-                        <td>${damage.id}</td>
-                        <td>${damage.damageType}</td>
-                        <td>${damage.description}</td>
-                        <td>${damage.drivable}</td>
-                        <td>${damage.car.carModel}</td>
-
-                    </tr>
-                    </tbody>
-                </table>
-            </c:forEach>
-
-            <h4 class="text-center"><a href="${contextPath}/adddamage">Add new damage </a> </h4>
-
-        </div>
-    </form:form>
+        <h4 class="text-center"><a href="${contextPath}/adddamage">Add new damage </a></h4>
 </body>
 </html>
 

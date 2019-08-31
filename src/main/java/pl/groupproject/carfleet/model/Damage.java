@@ -28,8 +28,6 @@ public class Damage {
     private String description;
     @Column(name = "can_be_used")
     private boolean drivable;
-//    private List<Car> carModel; //todo lista wyboru samochodu z bazy findCarByID
-
 
     @ManyToMany(mappedBy = "damages")
     private Set<Departure> departures;
@@ -38,18 +36,14 @@ public class Damage {
     @JoinColumn(name = "car_id")
     private Car car;
 
-//    @ManyToOne
-//    @JoinColumn(name = "drivers_id")
-//    private Driver driver;
-
     @OneToMany(mappedBy = "damages")
     private Set<Driver> drivers;
 
+    public boolean isDrivable() {
+        return drivable;
+    }
 
     public boolean getDrivable() {
         return drivable;
     }
-
-
-
 }
