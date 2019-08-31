@@ -15,5 +15,6 @@ public class CarsDto {
     private String carModel;
     private String vinNr;
     private boolean reservation;
+    private String update;
 
 }

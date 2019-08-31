@@ -32,6 +32,7 @@
     <a href="/departurelist" target="/departurelist"><button>Departures list</button></a><br>
     <a href="/adddamage" target="/adddamage"><button>Add damage</button></a><br>
     <a href="/damages" target="/damages"><button>Damage list</button></a><br>
+    <a href="/update" target="/update"><button>Aktualizacja pojazdu</button></a><br>
 
 
 </div>

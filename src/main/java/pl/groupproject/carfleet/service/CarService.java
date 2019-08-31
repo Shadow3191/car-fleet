@@ -7,7 +7,6 @@ import pl.groupproject.carfleet.dto.CarsDto;
 import pl.groupproject.carfleet.model.Car;
 import pl.groupproject.carfleet.repository.CarRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,7 +30,7 @@ public class CarService {
         carRepository.save(carEnitity);
     }
     private CarsDto mupToDto(Car car){
-        return new CarsDto(car.getId(),car.getCarBrand(), car.getCarModel(), car.getVinNr(), car.isReservation());
+        return new CarsDto(car.getId(),car.getCarBrand(), car.getCarModel(), car.getVinNr(), car.isReservation(), car.getCarUpdate());
     }
 
 
@@ -46,9 +45,15 @@ public class CarService {
         carRepository.save(car);
     }
 
-//    public void updateCar(Car car){
-//        cars. // ???
+//    public void updateCar(String id, CarsDto carsDto){
+//        Optional<Car> byId = carRepository.findById(Long.valueOf(id));
+//        Car car = byId.get();
+//        car.setCarUpdate(car.getCarUpdate());
+//        carRepository.save(car);
 //    }
-
-
+//
+//
+//
+//    public void updateCar(CarsDto carForm) {
+//    }
 }

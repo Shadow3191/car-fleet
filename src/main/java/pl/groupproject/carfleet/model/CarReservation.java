@@ -17,7 +17,7 @@ public class CarReservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-
+    private Long id;
     private String reservedBy;
 
 

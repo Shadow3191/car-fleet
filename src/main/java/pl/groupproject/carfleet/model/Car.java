@@ -30,6 +30,7 @@ public class Car {
     private String vinNr;
     private int amountOfFuel;
     private boolean reservation;
+    private String carUpdate;
 
     @ManyToMany(mappedBy = "cars")
     private List<Driver> drivers;
@@ -37,14 +38,15 @@ public class Car {
     public CarsDto carsDto(){
         return CarsDto.builder()
                 .id(id)
-                .carModel(carBrand)
+                .carModel(carModel)
                 .build();
     }
 
     public CarInformationDto carInformationDto(){
         return CarInformationDto.builder()
                 .id(id)
-                .carModel(carBrand)
+                .carBrand(carBrand)
+                .carModel(carModel)
                 .initialMileage(initialMileage)
                 .finaleMileage(finaleMileage)
                 .vinNr(vinNr)
@@ -66,8 +68,9 @@ public class Car {
     @JoinColumn(name = "departures_id")
     private Departure departures;
 
-    public Car(String carModel, String initialMileage, String finaleMileage, String vinNr) {
-        this.carBrand = carModel;
+    public Car(String carBrand, String carModel, String initialMileage, String finaleMileage, String vinNr) {
+        this.carBrand = carBrand;
+        this.carModel = carModel;
         this.initialMileage = initialMileage;
         this.finaleMileage = finaleMileage;
         this.vinNr = vinNr;
