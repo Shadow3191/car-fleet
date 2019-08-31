@@ -33,5 +33,15 @@ public class DriverServiceImpl implements DriverService {
         return driverRepository.findByLogin(login);
     }
 
+    @Override
+    public String changeEmail(Long id, String newEmail) {
+        return null;
+    }
+
+    @Override
+    public List<Driver> getAll() {
+        return driverRepository.findAll();
+    }
+
 
 }

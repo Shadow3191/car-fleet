@@ -18,20 +18,32 @@ public class CarService {
 
     private final CarRepository carRepository;
 
-    public void addCar(CarInformationDto car){
-        Car carEnitity = Car.builder()
-                .id(car.getId())
-                .carBrand(car.getCarBrand())
-                .carModel(car.getCarModel())
-                .initialMileage(car.getInitialMileage())
-                .finaleMileage(car.getFinaleMileage())
-                .vinNr(car.getVinNr())
-                .amountOfFuel(car.getAmountOfFuel())
-                .build();
-        carRepository.save(carEnitity);
+    public void createOrUpdateCar(CarInformationDto car) {
+        Car carEntity;
+        if (car.getId() != null) {
+            carEntity = carRepository.findById(car.getId()).orElseThrow(() -> new IllegalStateException("Nie istnieje auto z podanym id"));
+            carEntity.setCarBrand(car.getCarBrand());
+            carEntity.setCarModel(car.getCarModel());
+            carEntity.setInitialMileage(car.getInitialMileage());
+            carEntity.setFinaleMileage(car.getFinaleMileage());
+            carEntity.setVinNr(car.getVinNr());
+            carEntity.setAmountOfFuel(car.getAmountOfFuel());
+        } else {
+            carEntity = Car.builder()
+                    .carBrand(car.getCarBrand())
+                    .carModel(car.getCarModel())
+                    .initialMileage(car.getInitialMileage())
+                    .finaleMileage(car.getFinaleMileage())
+                    .vinNr(car.getVinNr())
+                    .amountOfFuel(car.getAmountOfFuel())
+                    .build();
+        }
+        carRepository.save(carEntity);
     }
-    private CarsDto mupToDto(Car car){
-        return new CarsDto(car.getId(),car.getCarBrand(), car.getCarModel(), car.getVinNr(), car.isReservation(), car.getCarUpdate());
+
+
+    private CarsDto mupToDto(Car car) {
+        return new CarsDto(car.getId(), car.getCarBrand(), car.getCarModel(), car.getVinNr(), car.isReservation(), car.getCarUpdate(), car.getDeleteCar());
     }
 
     public List<CarSelectDto> getAllForSelect() {
@@ -44,11 +56,37 @@ public class CarService {
         return carRepository.findAll().stream().map(this::mupToDto).collect(Collectors.toList());
     }
 
-    public void makeReservation(String id){
+    public CarInformationDto getInformationAboutCar(Long id) {
+        Car car = carRepository.findById(id).orElseThrow(() -> new IllegalStateException("Nie istnieje auto z podanym id"));
+
+        return CarInformationDto.builder()
+                .id(car.getId())
+                .carBrand(car.getCarBrand())
+                .carModel(car.getCarModel())
+                .initialMileage(car.getInitialMileage())
+                .finaleMileage(car.getFinaleMileage())
+                .vinNr(car.getVinNr())
+                .amountOfFuel(car.getAmountOfFuel())
+                .build();
+    }
+
+    public void makeReservation(String id) {
         Optional<Car> byId = carRepository.findById(Long.valueOf(id));
         Car car = byId.get();
         car.setReservation(!car.isReservation());
         carRepository.save(car);
     }
+
+
+//    public void updateCar(String id) {
+//        Optional<Car> updateById = carRepository.findById(Long.valueOf(id));
+//        Car car = updateById.get();
+//        carRepository.save(car);
+//    }
+
+    public void deleteCar(Long id) {
+        carRepository.deleteById(id);
+    }
+
 
 }
