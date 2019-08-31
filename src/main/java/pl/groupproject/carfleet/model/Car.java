@@ -8,7 +8,7 @@ import pl.groupproject.carfleet.dto.CarsDto;
 import javax.persistence.*;
 import java.util.List;
 
-//@Embeddable
+
 @Getter
 @Setter
 @Entity
